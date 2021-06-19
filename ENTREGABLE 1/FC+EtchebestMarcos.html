@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consigna 1</title>
+<script>
+function Usuario(nombre, apellido) {
+  this.nombre = nombre;
+  this.apellido = apellido;
+  this.libros = [];
+  this.mascotas = [];
+  this.nombreCompleto = nombre + " " + apellido;
+
+  this.getFullName = function () {
+    return this.nombreCompleto;
+  };
+  this.getMascotas = function () {
+    return this.mascotas.length;
+  };
+  this.getBooks = function () {
+    for (let i = 0; i < this.libros.length; i++) {
+      console.log(this.libros[i].nombre);
+    }
+    return;
+  };
+  this.addMascota = function (pet) {
+    if (typeof pet == "string") {
+      this.mascotas.push(pet);
+    }
+    if (typeof pet !== "string") {
+      console.log("addMascota solo admite strings");
+    }
+    return;
+  };
+  this.addBook = function (book, autor) {
+    if (typeof book === "string" && typeof autor === "string") {
+      this.libros.push({ nombre: book, autor: autor });
+    }
+    if (typeof book !== "string" || typeof autor !== "string") {
+      console.log("addBook solo admite strings");
+    }
+    return;
+  };
+}
+
+let marcos = new Usuario("Marcos", "Etchebest");
+marcos.getFullName();
+marcos.addBook("El señor de los anillos", "JRR Tolkien");
+marcos.addBook("Juego de tronos", "George RR Martin");
+marcos.getBooks();
+        
+</script>
+</head>
+<body>
+    <h1>Desafio Entregable 1 Coderhouse - Marcos Etchebest</h1>
+</body>
+</html>

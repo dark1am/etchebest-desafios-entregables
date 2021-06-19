@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consigna 1 - Reentrega</title>
+<script>
+
+function Usuario(nombre, apellido) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.libros = [];
+    this.mascotas = [];
+  }
+  Usuario.prototype.getFullName = function () {
+    return `${this.nombre} ${this.apellido}`;
+  };
+  Usuario.prototype.getMascotas = function () {
+    return this.mascotas.length;
+  };
+  Usuario.prototype.getBooks = function () {
+    let tempBookArr = []
+    
+    this.libros.map((item)=>{
+      tempBookArr.push(item.nombre)
+    })
+    
+    return tempBookArr;
+  };
+  Usuario.prototype.addMascota = function (pet) {
+    if (typeof pet == "string") {
+      this.mascotas.push(pet);
+    } else {
+      console.log("addMascota solo admite strings");
+    }
+  };
+  Usuario.prototype.addBook = function (book, autor) {
+    if (typeof book === "string" && typeof autor === "string") {
+      this.libros.push({ 
+        nombre: book, 
+        autor: autor 
+      });
+    } else {
+      console.log("addBook solo admite strings");
+    }
+  };
+  
+  let marcos = new Usuario("Marcos", "Etchebest");
+
+</script>
+</head>
+<body>
+    <h1>Desafio Entregable 1 Coderhouse - Marcos Etchebest</h1>
+</body>
+</html>

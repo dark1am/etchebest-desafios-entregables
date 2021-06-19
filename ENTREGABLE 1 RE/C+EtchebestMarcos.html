@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consigna 2 - Reentrega</title>
+    <script>
+
+class Usuario {
+  constructor(nombre, apellido) {
+    this._nombre = nombre;
+    this._apellido = apellido;
+    this._libros = [];
+    this._mascotas = [];
+  }
+  getFullName() {
+    return `${this._nombre} ${this._apellido}`;
+  }
+  getMascotas() {
+    return this._mascotas.length;
+  }
+  getBooks() {
+    let tempBookArr = []
+    
+    this._libros.map((item)=>{
+      tempBookArr.push(item.nombre)
+    })
+    
+    return tempBookArr;
+  }
+  addMascotas(pet) {
+    if (typeof pet === "string") {
+      this._mascotas.push(pet);
+    } else {
+      console.log("addMascota solo acepta datos de tipo string");
+    }
+  }
+  addBooks(book, autor) {
+    if(typeof book === "string" && typeof autor === "string"){
+        this._libros.push({
+        nombre: book,
+        autor: autor,
+      });
+    } else {
+      console.log('addBooks solo admite datos de tipo string')
+    }
+  }
+}
+
+const marcos = new Usuario("Marcos", "Etchebest");
+
+      </script>
+</head>
+<body>
+    <h1>Desafio Entregable 1 Coderhouse - Marcos Etchebest</h1>
+</body>
+    
+</html>

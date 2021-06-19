@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consigna 2</title>
+    <script>
+class Usuario {
+  constructor(nombre, apellido) {
+    this._nombre = nombre;
+    this._apellido = apellido;
+    this._libros = [];
+    this._mascotas = [];
+  }
+  getFullName() {
+    return `${this._nombre} ${this._apellido}`;
+  }
+  getMascotas() {
+    return this._mascotas.length;
+  }
+  getBooks() {
+    for(let i=0; i<this._libros.length;i++){
+      console.log(this._libros[i].nombre)
+    }
+    return
+  }
+  addMascotas(pet) {
+    if (typeof pet === "string") {
+      this._mascotas.push(pet);
+    }
+    if (typeof pet !== "string") {
+      console.log("addMascota solo acepta datos de tipo string");
+    }
+  }
+  addBooks(book, autor) {
+    this._libros.push({
+      nombre: book,
+      autor: autor,
+    });
+  }
+}
+
+const marcos = new Usuario("Marcos", "Etchebest");
+
+marcos.addMascotas("perro");
+marcos.addMascotas("loro");
+marcos.getMascotas();
+marcos.addBooks("El señor de los anillos", "Jrr. Tolkien");
+marcos.addBooks("Zama","Antonio Di Benedetto")
+marcos.getBooks();
+
+      </script>
+</head>
+<body>
+    <h1>Desafio Entregable 1 Coderhouse - Marcos Etchebest</h1>
+</body>
+    
+</html>
