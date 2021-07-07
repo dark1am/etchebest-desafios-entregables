@@ -8,9 +8,13 @@ class Archivo{
         this.ruta=ruta;
     }
     async leer(){
-        await fs.promises.readFile(this.ruta,'utf-8')
-        .then(res=>console.log(JSON.parse(res)))
-        .catch(err=>console.log(this.productos))
+        try{
+            const lectura = await fs.promises.readFile(this.ruta,'utf-8')
+            console.log(JSON.parse(lectura))
+        }
+        catch(error){
+            console.log(error)
+        }
     }
     async guardar(titulo,precio,url){
         let obj = {
@@ -22,15 +26,24 @@ class Archivo{
 
         this.productos.push(obj)
 
-        await fs.promises.writeFile(this.ruta,JSON.stringify(this.productos),'utf-8')
-        .then(res=>console.log('Guardado exitoso!'))
-        .catch(err=>console.log(err))
+        try{ 
+            await fs.promises.writeFile(this.ruta,JSON.stringify(this.productos),'utf-8')
+            console.log('Guardado exitoso!')
+        }
+        catch(error){
+            console.log(error)
+        }
     }
     async borrar(){
-        await fs.promises.unlink(this.ruta)
-        .then(res=>console.log('El archivo ha sido borrado con exito!'))
-        .catch(err=>console.log(err))
+        try{
+            await fs.promises.unlink(this.ruta)
+            console.log('El archivo ha sido borrado con exito!')
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 }
 
 const miArchivo = new Archivo('./productos.txt')
+
