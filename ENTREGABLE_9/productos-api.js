@@ -18,15 +18,16 @@ class Productos{
         }   
     }
     showItem(id){
-        if(this.productos[id-1]){
-            return this.productos[id]
+        if(this.productos.find(e=>e.id==id)!=undefined){
+            return this.productos.find(e=>e.id==id)
         } else {
             return {error:'Producto no encontrado'}
         }
     }
     updateItem(id,prod){
-        if(id<=this.productos.length){
-            return this.productos[id] = {
+        if(this.productos.find(e=>e.id==id)!==undefined){
+            let temp = this.productos.indexOf(this.productos.find(e=>e.id==id))
+            return this.productos[temp] = {
                 "title":prod.title,
                 'price':prod.price,
                 'thumbail':prod.thumbnail,

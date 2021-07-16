@@ -18,8 +18,8 @@ class Productos{
         }   
     }
     showItem(id){
-        if(this.productos[id-1]){
-            return this.productos[id]
+        if(this.productos.find(e=>e.id==id)!=undefined){
+            return this.productos.find(e=>e.id==id)
         } else {
             return {error:'Producto no encontrado'}
         }
