@@ -13,7 +13,7 @@ app.use('/api',routerApi)
 app.engine('handlebars',handleBars())
 app.set('view engine','handlebars')
 
-app.listen(PORT,()=>{
+const server = app.listen(PORT,()=>{
     console.log(`Servidor escuchando el puerto ${PORT}`)
 })
 
@@ -26,8 +26,9 @@ routerApi.get('/productos/:id',(req,res)=>{
 })
 
 routerApi.post('/productos',(req,res)=>{
-    res.send(productosApi.add(req.body));
-    res.redirect('/formulario')
+    productosApi.add(req.body)
+    res.redirect('/productos/formulario')
+    res.send()
 })
 
 routerApi.put('/productos/:id',(req,res)=>{
@@ -44,4 +45,15 @@ app.get('/productos/vista',(req,res)=>{
 
 app.get('/productos/formulario',(req,res)=>{
     res.render('productos')
+})
+
+app.get('*',(req,res)=>{
+    res.send('404: Page not found')
+})
+
+const socketIo = require('socket.io')
+const io = socketIo(server)
+
+io.on('connection',()=>{
+    console.log('new connection');
 })
